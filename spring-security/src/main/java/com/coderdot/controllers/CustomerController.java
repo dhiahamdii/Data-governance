@@ -6,6 +6,7 @@ import com.coderdot.repository.CustomerRepository;
 import com.coderdot.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -16,8 +17,10 @@ import java.util.Map;
 @RequestMapping("/api")
 public class CustomerController {
 
+
     @Autowired
     private CustomerRepository customerRepository;
+    private  PasswordEncoder passwordEncoder;
 
     //get all data
     @CrossOrigin(origins = "http://localhost:4200")
@@ -54,16 +57,30 @@ public class CustomerController {
         Customer customer = customerRepository.findById(id).
                 orElseThrow(()-> new ResourceNotFoundException("Customer with id "+id+"does not exists"));
 
-        
-        customer.setName(userDetails.getName());
-        customer.setEmail(userDetails.getEmail());
-customer.setPassword(userDetails.getPassword());
-        Customer updatedCustomer= customerRepository.save(customer);
 
+        customer.setName(userDetails.getName());
+        customer.setPassword(userDetails.getPassword());
+        Customer updatedCustomer= customerRepository.save(customer);
         return ResponseEntity.ok(updatedCustomer);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PutMapping("/customer/{id}/password")
+    public ResponseEntity<?> updateCustomerPassword(@PathVariable Long id, @RequestParam String oldPassword, @RequestParam String newPassword) {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Customer with id " + id + " does not exist"));
 
+        // Check if the provided old password matches the stored password
+        if (passwordEncoder.matches(oldPassword, customer.getPassword())) {
+            // If old password matches, encode and update the new password
+            customer.setPassword(passwordEncoder.encode(newPassword));
+            customerRepository.save(customer);
+            return ResponseEntity.ok().build();
+        } else {
+            // If old password doesn't match, return error response
+            return ResponseEntity.badRequest().body("Old password is incorrect");
+        }
+    }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/customer/{id}")

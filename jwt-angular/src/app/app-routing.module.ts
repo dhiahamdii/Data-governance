@@ -10,6 +10,7 @@ import {ForgetPasswordComponent} from "./forget-password/forget-password.compone
 import {UpdateUserComponent} from "./update-user/update-user.component";
 import {ShowDetailsComponent} from "./show-details/show-details.component";
 import {UpdateProfileComponent} from "./update-profile/update-profile.component";
+import {ChangePasswordComponent} from "./change-password/change-password.component";
 
 const routes: Routes = [
   { path: "register", component: RegisterComponent },
@@ -22,6 +23,9 @@ const routes: Routes = [
   {path:'updating-by-id/:id',component:UpdateUserComponent},
   {path:'details-of-user/:id',component:ShowDetailsComponent},
   {path:'update-profile/:id',component:UpdateProfileComponent},
+  {path:'change-password/:id',component:ChangePasswordComponent},
+
+
 
 
 

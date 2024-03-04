@@ -41,6 +41,6 @@ export class UpdateProfileComponent {
   }
 
   goToUserList(){
-    this.router.navigate(['/list-user']);
+    this.router.navigate(['/profile']);
   }
 }

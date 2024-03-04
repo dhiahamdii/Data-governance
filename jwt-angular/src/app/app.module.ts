@@ -14,6 +14,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { ShowDetailsComponent } from './show-details/show-details.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     ForgetPasswordComponent,
     ShowDetailsComponent,
     UpdateUserComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    ChangePasswordComponent
   ],
     imports: [
         BrowserModule,

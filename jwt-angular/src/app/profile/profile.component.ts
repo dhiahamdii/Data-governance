@@ -33,4 +33,7 @@ export class ProfileComponent {
   updateCustomer(id: number){
     this.router.navigate(['update-profile', id]);
   }
+  changePassword(id: number){
+    this.router.navigate(['change-password', id]);
+  }
 }

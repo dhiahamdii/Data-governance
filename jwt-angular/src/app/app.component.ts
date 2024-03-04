@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { JwtService } from 'src/app/service/jwt.service';
+
+import {Customer} from "./customer";
+import {CustomerService} from "./customer.service";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,13 +18,20 @@ export class AppComponent {
     private fb: FormBuilder,
     private router: Router
   ) {
+
   }
 
   currentUser: any;
-
+  id: number
   ngOnInit(): void {
     this.currentUser = this.currentUser.getUser();
+
   }
+
+  updateCustomer(id: number){
+    this.router.navigate(['update-profile', id]);
+  }
+
 
   logout(): void {
 this.service.logouut(this)

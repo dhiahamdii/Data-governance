@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping( "/api")
 public class LogoutController {
 
-    private AuthService authService;
-    private  CustomerRepository customerRepository ;
+    private final AuthService authService;
+    private final CustomerRepository customerRepository ;
     @Autowired
     public LogoutController(AuthService authService, CustomerRepository customerRepository) {
         this.authService = authService;

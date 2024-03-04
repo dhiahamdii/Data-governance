@@ -24,7 +24,7 @@ export class AppComponent {
   }
 
   logout(): void {
-
+this.service.logouut(this)
         localStorage.removeItem('token');
         this.router.navigate(['/login']).then(() => {
           window.location.reload();

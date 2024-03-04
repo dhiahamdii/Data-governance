@@ -55,21 +55,19 @@
       <br><br>
 
       <div class="form-group col-md-6">
-        <label class="form-label"><b>Department</b></label>
+        <label class="form-label"><b>Statu</b></label>
         <select id="department" class="form-select" [(ngModel)]="user.department" name="department" required
                 #department="ngModel" [ngClass]="{ 'is-invalid': f.submitted && department.errors }">
 
 
           <div *ngIf="f.submitted && department.errors" class="invalid-feedback">
-            <div *ngIf="department.errors['required']">Department is required</div>
+            <div *ngIf="department.errors['required']">Statu is required</div>
           </div>
 
 
           <option selected disabled value="">Choose..</option>
-          <option>IT</option>
-          <option>HR</option>
-          <option>Finance</option>
-          <option>Marketing</option>
+          <option>Blocked</option>
+          <option>Unblocked</option>
         </select>
       </div>
 
@@ -87,7 +85,7 @@
           <option>Manager</option>
           <option>Analyst</option>
           <option>Accountant</option>
-          <option>System Analyst</option>
+          <option>Audit</option>
         </select>
       </div>
 

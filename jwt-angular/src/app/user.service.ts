@@ -12,7 +12,7 @@ export class UserService {
 
 
 
-  private baseURL: string = "http://localhost:8080/api/v1/user";
+  private baseURL: string = "http://localhost:8080/api/user";
 
   constructor(private httpClient: HttpClient) { }
 

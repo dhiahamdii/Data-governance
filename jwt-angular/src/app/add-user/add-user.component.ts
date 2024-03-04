@@ -21,7 +21,7 @@ export class AddUserComponent {
 
   }
   submitform!: NgForm;
-  private baseURL = "http://localhost:8080/api/v1/user";
+  private baseURL = "http://localhost:8080/api/user";
   user: User = new User();
 
   saveUser() {

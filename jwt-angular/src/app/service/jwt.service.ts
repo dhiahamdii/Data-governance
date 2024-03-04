@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import {User} from "../user";
 
 const BASE_URL = ["http://localhost:8080/"]
 
@@ -28,6 +29,7 @@ export class JwtService {
     })
   }
 
+
   private createAuhtorizationHeader() {
     const jwtToken = localStorage.getItem('jwt');
     if (jwtToken) {
@@ -40,5 +42,6 @@ export class JwtService {
     }
     return null;
   }
+
 
 }

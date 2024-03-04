@@ -7,6 +7,8 @@ import {ProfileComponent} from "./profile/profile.component";
 import {AddUserComponent} from "./add-user/add-user.component";
 import {ListUserComponent} from "./list-user/list-user.component";
 import {ForgetPasswordComponent} from "./forget-password/forget-password.component";
+import {UpdateUserComponent} from "./update-user/update-user.component";
+import {ShowDetailsComponent} from "./show-details/show-details.component";
 
 const routes: Routes = [
   { path: "register", component: RegisterComponent },
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: "add-user", component: AddUserComponent },
   { path: "list-user", component: ListUserComponent },
   { path: "forget-password", component: ForgetPasswordComponent },
+  {path:'updating-by-id/:id',component:UpdateUserComponent},
+  {path:'details-of-user/:id',component:ShowDetailsComponent},
 
 
 ];

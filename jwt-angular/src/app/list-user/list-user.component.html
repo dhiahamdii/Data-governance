@@ -1,1 +1,62 @@
-<p>list-user works!</p>
+<br>
+<br>
+<!-- <h1>Employee List</h1> -->
+<div class="container">
+
+  <div >
+    <form (ngSubmit)="goToUser()" >
+      <div class="form-group col-md-6 inline ">
+        <input  [(ngModel)]="EnteredID" type="text" class="form-control" id="id" name="id" placeholder="Search by ID">
+        <button class="btn btn-primary " type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+  <div>
+    <br><br>
+  </div>
+  <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+    <tr >
+      <th scope="col">Id</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Email</th>
+      <!-- <th>Salary</th> -->
+      <th scope="col">Statut</th>
+      <th scope="col">Role</th>
+      <th scope="col">Date</th>
+
+      <!-- <th>Joining Date</th> -->
+      <th scope="col">Actions</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr  *ngFor = "let user of users">
+      <td>
+        <div class="d-flex align-items-center">
+          <div class="ms-3">
+            <p class="fw-bold mb-1">{{user.id}}</p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1"></p>
+        <p class="text-muted mb-0">{{user.fname}} {{user.lname}}</p>
+      </td>
+      <td>
+        <p>{{user.email}}</p>
+      </td>
+      <td>{{user.department}}</td>
+      <td>{{user.designation}}</td>
+      <td>{{user.joiningDate}}</td>
+
+      <td>
+        <button (click) = "updateUser(user.id)" class = "btn  btn-secondary btn-sm"> Update</button>
+        <button (click) = "deleteUser(user.id)" class = "btn btn-danger btn-sm" style="margin-left: 10px"> Delete</button>
+        <button (click) = "detailsOfUser(user.id)" class = "btn btn-success btn-sm " style="margin-left: 10px"> View</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <br><br><br>
+</div>

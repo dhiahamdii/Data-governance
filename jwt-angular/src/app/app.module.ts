@@ -13,6 +13,7 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ShowDetailsComponent } from './show-details/show-details.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     AddUserComponent,
     ForgetPasswordComponent,
     ShowDetailsComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    UpdateProfileComponent
   ],
     imports: [
         BrowserModule,

@@ -39,6 +39,5 @@ this.service.logouut(this)
         this.router.navigate(['/login']).then(() => {
           window.location.reload();
         });
-
   }
 }

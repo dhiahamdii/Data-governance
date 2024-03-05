@@ -23,6 +23,7 @@ export class JwtService {
   logouut(id){
     return this.http.get(BASE_URL + 'api/logout/{id}')
   }
+
   hello(): Observable<any> {
     return this.http.get(BASE_URL + 'api/hello', {
       headers: this.createAuhtorizationHeader()

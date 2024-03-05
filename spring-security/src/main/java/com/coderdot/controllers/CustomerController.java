@@ -4,6 +4,7 @@ import com.coderdot.entities.Customer;
 import com.coderdot.exception.ResourceNotFoundException;
 import com.coderdot.repository.CustomerRepository;
 import com.coderdot.repository.CustomerRepository;
+import com.coderdot.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,6 +22,24 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
     private  PasswordEncoder passwordEncoder;
+
+
+
+
+
+        @Autowired
+        private CustomerService customerService;
+        @CrossOrigin(origins = "http://localhost:4200")
+        @PutMapping("/change-password/{userId}")
+        public ResponseEntity<String> changePassword(@PathVariable Long userId, @RequestParam String oldPassword, @RequestParam String newPassword) {
+            customerService.changePassword(userId, oldPassword, newPassword);
+            return ResponseEntity.ok("Password changed successfully");
+        }
+
+
+
+
+
 
     //get all data
     @CrossOrigin(origins = "http://localhost:4200")

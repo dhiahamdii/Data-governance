@@ -19,8 +19,8 @@ export class RegisterComponent implements OnInit {
 ) { }
 
   redirectToLogin() {
-    this.router.navigate(['/login']);
 
+    this.router.navigate(['/login']);
   }
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -48,7 +48,6 @@ export class RegisterComponent implements OnInit {
         if (response.id != null) {
           alert("Hello " + response.name);
           this.router.navigateByUrl("/profile");
-
         }
       }
     )

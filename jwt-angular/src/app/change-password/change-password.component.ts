@@ -19,7 +19,17 @@ export class ChangePasswordComponent implements OnInit {
 
 
 
-
+  changePassword(userId: number, oldPassword: string, newPassword: string): void {
+    this.customerService.changePassword(userId, oldPassword, newPassword).subscribe(
+      () => {
+        // Password changed successfully, handle success message or navigation here
+      },
+      error => {
+        // Handle error, display error message or log the error
+        console.error('Error changing password:', error);
+      }
+    );
+  }
 
 
   ngOnInit(): void {

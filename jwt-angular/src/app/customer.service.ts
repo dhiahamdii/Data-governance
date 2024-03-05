@@ -17,13 +17,23 @@ export class CustomerService {
 
   constructor(private httpClient: HttpClient) { }
 
+
+
+  changePassword(userId: number, oldPassword: string, newPassword: string): Observable<any> {
+    const url = `${this.baseURL}/change-password/${userId}?oldPassword=${oldPassword}&newPassword=${newPassword}`;
+    return this.httpClient.put<any>(url, null); // Pass null as the request body
+  }
+
+
+
+
   getCustomerList(): Observable<Customer[]>{
     return this.httpClient.get<Customer[]>(this.baseURL);
   }
 
 
   getCustomerById(id: number): Observable<Customer>{
-    return this.httpClient.get<Customer>(`${this.baseURL}/1`);
+    return this.httpClient.get<Customer>(`${this.baseURL}/4`);
   }
 
 

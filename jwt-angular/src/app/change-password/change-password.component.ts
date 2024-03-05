@@ -10,12 +10,17 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class ChangePasswordComponent implements OnInit {
 
-  id: number;
+  id: any;
   customer: Customer = new Customer();
 
   constructor(private customerService: CustomerService,
               private route: ActivatedRoute,
               private router: Router) {}
+
+
+
+
+
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];

@@ -23,7 +23,7 @@ export class CustomerService {
 
 
   getCustomerById(id: number): Observable<Customer>{
-    return this.httpClient.get<Customer>(`${this.baseURL}/4`);
+    return this.httpClient.get<Customer>(`${this.baseURL}/1`);
   }
 
 

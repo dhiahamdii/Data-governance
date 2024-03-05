@@ -37,3 +37,4 @@ export class ProfileComponent {
     this.router.navigate(['change-password', id]);
   }
 }
+

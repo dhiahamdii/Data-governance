@@ -11,14 +11,16 @@ import {UpdateUserComponent} from "./update-user/update-user.component";
 import {ShowDetailsComponent} from "./show-details/show-details.component";
 import {UpdateProfileComponent} from "./update-profile/update-profile.component";
 import {ChangePasswordComponent} from "./change-password/change-password.component";
+import {AuthGuard} from "./guards/auth.guards";
 
 const routes: Routes = [
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
-  { path: "dashboard", component: DashboardComponent },
-  { path: "profile", component: ProfileComponent },
-  { path: "add-user", component: AddUserComponent },
-  { path: "list-user", component: ListUserComponent },
+  { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard]},
+
+  { path: "profile", component: ProfileComponent,canActivate: [AuthGuard] },
+  { path: "add-user", component: AddUserComponent, canActivate: [AuthGuard] },
+  { path: "list-user", component: ListUserComponent, canActivate: [AuthGuard]},
   { path: "forget-password", component: ForgetPasswordComponent },
   {path:'updating-by-id/:id',component:UpdateUserComponent},
   {path:'details-of-user/:id',component:ShowDetailsComponent},

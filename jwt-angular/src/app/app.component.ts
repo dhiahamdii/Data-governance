@@ -34,10 +34,18 @@ export class AppComponent {
 
 
   logout(): void {
-this.service.logouut(this)
-        localStorage.removeItem('token');
+
+    this.service.logouut(this)
+
+        localStorage.removeItem('jwt');
+
+
         this.router.navigate(['/login']).then(() => {
+
           window.location.reload();
+
         });
+
   }
+
 }

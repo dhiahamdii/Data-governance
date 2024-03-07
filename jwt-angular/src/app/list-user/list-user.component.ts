@@ -20,25 +20,20 @@ export class ListUserComponent {
   }
 
   ngOnInit(): void {
-
-    // this.employees = [
-    //   { "id":1,fname: 'John', lname: 'Doe', email: 'john@example.com', salary: 50000, department: 'IT', designation: 'Developer' },
-
-    // ];
-
-    this.getUsers();
+    this.getEmployees();
   }
 
 
   goToUser(){
-
-
     console.log(this.EnteredID);
     this.router.navigate(['details-of-user',this.EnteredID]);
   }
 
-  getUsers(){
-    this.userService.getUserList().subscribe(data => {this.users = data;});
+  getEmployees(){
+    this.userService.getUserList().subscribe(data => {
+      this.users = data;
+      console.warn(data)
+    });
   }
 
   updateUser(id: number){
@@ -49,11 +44,10 @@ export class ListUserComponent {
 
 
   deleteUser(id: number){
-
     if(confirm("Are you sure to delete Employee ID: "+id)){
       this.userService.deleteUser(id).subscribe( data => {
         console.log(data);
-        this.getUsers();
+        this.getEmployees();
       })}
   }
 
@@ -61,5 +55,6 @@ export class ListUserComponent {
   detailsOfUser(id: number){
     this.router.navigate(['details-of-user', id]);
   }
+
 
 }

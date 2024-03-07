@@ -16,6 +16,7 @@ public class MailController {
     }
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/mail")
+
     public void sendMail(@RequestBody String to) throws MessagingException {
     mailService.sendNewMail(to);
     }

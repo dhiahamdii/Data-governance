@@ -9,11 +9,11 @@
 
     <div>
 
-      <img src="../assets/download.jpg">
+     <!-- <img src="../assets/download.jpg">-->
     </div>
     <div >
-      <table  class=" table table-striped  border-dark  ">
-        <thead class=" table-dark">
+      <table  class="table align-middle mb-0 bg-white">
+        <thead class="table-info">
         <tr>
           <th  >Attribute</th>
           <th  >Value</th>
@@ -22,38 +22,25 @@
         </thead>
 
         <tbody>
-        <tr>
-          <td><b>Id</b></td>
-          <td>{{user.id}}</td>
-        </tr>
+
         <tr>
           <td><b>First Name</b></td>
           <td>{{user.fname}}</td>
         </tr>
-        <tr>
-          <td><b>Last Name</b></td>
-          <td>{{user.lname}}</td>
-        </tr>
+
         <tr>
           <td><b>Email</b></td>
           <td>{{user.email}}</td>
         </tr>
         <tr>
-          <td><b>Salary</b></td>
-          <td>{{user.salary}}</td>
+          <td><b>Role</b></td>
+          <td>{{user.role.nomRole}}</td>
         </tr>
         <tr>
-          <td><b>Department</b></td>
-          <td>{{user.department}}</td>
+          <td><b>Role description</b></td>
+          <td>{{user.role.descriptionRole}}</td>
         </tr>
-        <tr>
-          <td><b>role</b></td>
-          <td>{{user.designation}}</td>
-        </tr>
-        <tr>
-          <td><b>Joining Date</b></td>
-          <td>{{user.joiningDate}}</td>
-        </tr>
+
 
         </tbody>
       </table>
@@ -65,3 +52,4 @@
   </div>
 
 </div>
+

@@ -1,125 +1,98 @@
 package com.coderdot.entities;
 
 import com.coderdot.dto.EtatUser;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name="user_table")
-
-public class User {
-    public User() {}
-    public User(String fname, String lname, String email, long salary, String department, String designation,
-                    LocalDate joiningDate, EtatUser etat) {
-        super();
-        this.fname = fname;
-        this.lname = lname;
-        this.email = email;
-        this.salary = salary;
-        this.department = department;
-        this.designation = designation;
-        this.joiningDate = joiningDate;
-        this.etat = etat;
-    }
-
+@Table(name = "user")
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Column(name="f_name")
+    private int id;
+    @Column(name = "password")
+    private String password;
+    private String username;
     private String fname;
-
-    @Column(name="l_name")
-    private String lname;
-
-    @Column(name="mail")
     private String email;
+    private boolean isActive;
 
-    @Column(name="sal")
-    private long salary;
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
 
-    @Column(name="dep")
-    private String department;
+    @ManyToOne
+    @JoinColumn(name = "role_id") // Assuming "role_id" is the foreign key column name
+    private Role role;
+    // Getters and setters
 
-    @Column(name="des")
-    private String designation;
-
-    @Column(name="jd")
-    private LocalDate joiningDate;
-    @Column(name="etat")
-
-    private EtatUser etat;
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
+    public Role getRole() {
+        return role;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public int getId() {
+        return id;
     }
 
-    public long getSalary() {
-        return salary;
+/*
+	public List<Role> getRoles() {
+		return roles;
+	}*/
+
+    // Implement UserDetails methods
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Return the authorities/roles for the user
+        return null; // You need to implement this method to return the user's authorities
     }
 
-    public void setSalary(long salary) {
-        this.salary = salary;
+    @Override
+    public String getPassword() {
+        // Return the user's password
+        return this.password;
     }
 
-    public String getDepartment() {
-        return department;
+    @Override
+    public String getUsername() {
+        // Return the user's username
+        return this.username;
+    }
+    // Implement other methods from UserDetails interface
+    // These methods can return true or false based on your application's logic
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public String getDesignation() {
-        return designation;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public void setDesignation(String designation) {
-        this.designation = designation;
-    }
-
-    public LocalDate getJoiningDate() {
-        return joiningDate;
-    }
-
-    public void setJoiningDate(LocalDate joiningDate) {
-        this.joiningDate = joiningDate;
-    }
-
-    public EtatUser getEtat() {
-        return etat;
-    }
-
-    public void setEtat(EtatUser etat) {
-        this.etat = etat;
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
+

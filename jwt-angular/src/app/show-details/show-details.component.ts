@@ -12,7 +12,6 @@ export class ShowDetailsComponent {
 
 
 
-
   id: number
   user!: User
   constructor(private route: ActivatedRoute, private userService: UserService) {

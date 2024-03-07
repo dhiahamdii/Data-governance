@@ -30,11 +30,11 @@ public class SignupController {
     @PostMapping
     public ResponseEntity<?> signupCustomer(@RequestBody SignupRequest signupRequest) {
         Customer createdCustomer = authService.createCustomer(signupRequest);
-        try {
+       /* try {
             mailService.sendNewMail(signupRequest.getEmail());
         } catch (MessagingException e) {
             throw new RuntimeException(e);
-        }
+        }*/
 
         if (createdCustomer != null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(createdCustomer);

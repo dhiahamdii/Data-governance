@@ -1,0 +1,13 @@
+loiName: Loi7
+RegleName: 777
+RegleContenu: 77777777.
+
+loiName: Loi8
+RegleName: R888888
+RegleContenu: 8888888.
+
+loiName: Loi4
+RegleName: Regle8
+RegleContenu: Contenu de Regle1 pour Loi2.
+
+endoffile
